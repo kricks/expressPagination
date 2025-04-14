@@ -6,7 +6,7 @@ let recipes = require('../recipes.json');
 router.get('/', async (req, res, next) => {
   try {
     const { context } = req;
-    const page = context && context.page || req.query.page;
+    const page = context?.page || 1; //defaults to first page
     const limit = context && context.limit || req.query.limit;
     const skip = context && context.skip || req.query.skip || ((page - 1) * limit);
     const search = context && context.searchTerm || req.query.q;
